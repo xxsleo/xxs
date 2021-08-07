@@ -64,7 +64,7 @@
 			function checkSurname() {
 				var sname=document.getElementById("surname").value
 				var snameTip=document.getElementById("surnameTip")
-				var reg=/^\d$/
+				var reg=/^\d{1,11}$/
 				if (!reg.test(sname)) {
 					snameTip.innerHTML="请输入正确的电话号！"
 					snameTip.style="color:red"
