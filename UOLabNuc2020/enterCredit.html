@@ -36,7 +36,7 @@
 			function checkSurname() {
 				var sname = document.getElementById("surname").value
 				var snameTip = document.getElementById("surnameTip")
-				var reg = /^[\u4e00-\u9fa5]$/
+				var reg = /^[\u4e00-\u9fa5]{2,5}$/
 				if(!reg.test(sname)) {
 					snameTip.innerHTML = "姓名不合法！"
 					snameTip.style = "color:red"
@@ -49,7 +49,7 @@
 			function checkUserphone() {
 				var uphone = document.getElementById("userphone").value
 				var uphoneTip = document.getElementById("userphoneTip")
-				var reg = /^\d$/
+				var reg = /^\d{1,11}$/
 				if(!reg.test(uphone)) {
 					uphoneTip.innerHTML = "请输入正确的学号！"
 					uphoneTip.style = "color:red"
