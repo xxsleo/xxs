@@ -1,0 +1,165 @@
+<<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+	<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>无标题文档</title>
+		<script src="js/jquery-1.11.3.js"></script>
+		<link href="css/style.css" rel="stylesheet" type="text/css" />
+		<link href="css/select.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/jquery.idTabs.min.js"></script>
+		<script type="text/javascript" src="js/select-ui.min.js"></script>
+		<script type="text/javascript" src="editor/kindeditor.js"></script>
+
+		<script type="text/javascript">
+			KE.show({
+				id: 'content7',
+				cssPath: './index.css'
+			});
+		</script>
+
+		<script type="text/javascript">
+			$(document).ready(function(e) {
+				$(".select1").uedSelect({
+					width: 345
+				});
+				$(".select2").uedSelect({
+					width: 167
+				});
+				$(".select3").uedSelect({
+					width: 100
+				});
+			});
+		</script>
+		<script>
+			function checkSurname() {
+				var sname = document.getElementById("surname").value
+				var snameTip = document.getElementById("surnameTip")
+				var reg = /^[\u4e00-\u9fa5]$/
+				if(!reg.test(sname)) {
+					snameTip.innerHTML = "姓名不合法！"
+					snameTip.style = "color:red"
+				} else {
+					snameTip.innerHTML = ""
+				}
+			}
+		</script>
+		<script>
+			function checkUserphone() {
+				var uphone = document.getElementById("userphone").value
+				var uphoneTip = document.getElementById("userphoneTip")
+				var reg = /^\d$/
+				if(!reg.test(uphone)) {
+					uphoneTip.innerHTML = "请输入正确的学号！"
+					uphoneTip.style = "color:red"
+				} else {
+					uphoneTip.innerHTML = ""
+				}
+			}
+		</script>
+
+	</head>
+
+	<body>
+
+		<div class="place">
+			<span>位置：</span>
+			<ul class="placeul">
+				<li>
+					<a href="#">首页</a>
+				</li>
+				<li>
+					<a href="#">录入学分</a>
+				</li>
+			</ul>
+		</div>
+
+		<div class="formbody">
+
+			<div id="tab1" class="tabson">
+				<ul class="forminfo">
+					<li>
+						<label>姓名<b>*</b></label>
+						<input onblur="checkSurname()" placeholder="请输入姓名" id="surname" type="text" class="dfinput" style="width:345px;" />
+						<i id="surnameTip"></i>
+					</li>
+					<li>
+						<label>学号<b>*</b></label>
+						<input placeholder="请输入学号" onblur="checkUserphone()" id="userphone" name="classid" type="text" class="dfinput" style="width:345px;" />
+						<i id="userphoneTip"></i>
+					</li>
+					<li>
+						<label>年级<b>*</b></label>
+						<input name="Input" type="text" placeholder="如2020级" class="dfinput" style="width:345px;" />
+					</li>
+					<li><label>院系<b>*</b></label>
+						<div class="vocation">
+							<select class="select3">
+								<option>软件学院</option>
+								<option>大数据学院</option>
+								<option>艺术学院</option>
+							</select>
+						</div>
+					</li>
+					<li>
+						<label>分值<b>*</b></label>
+						<input name="Input" type="text" placeholder="请输入分值" class="dfinput" style="width:345px;" />
+					</li>
+					<li><label>事由<b>*</b></label>
+						<div class="vocation">
+							<select class="select3">
+								<option>请选择</option>
+								<option>创新公开课</option>
+								<option>实践公开课</option>
+								<option>通识公开课</option>
+							</select>
+						</div>
+					</li>
+					<li>
+						<label>取得时间<b>*</b></label>
+						<input type="date" class="dfinput" />
+					</li>
+					<li>
+						<label>录入时间<b>*</b></label>
+						<input type="text" id="today" class="dfinput">
+					</li>
+					<script type="text/javascript">
+						function today() { //构建方法
+							var today = new Date(); //new 出当前时间
+							var h = today.getFullYear(); //获取年
+							var m = today.getMonth() + 1; //获取月
+							var d = today.getDate(); //获取日
+							var H = today.getHours(); //获取时
+							var M = today.getMinutes(); //获取分
+							var S = today.getSeconds(); //获取秒
+							document.getElementById("today").value = h + "-" + m + "-" + d + " " + H + ":" + M + ":" + S; //返回 年-月-日 时:分:秒//将获取到的 年-月-日 时:分:秒 赋给input文本输入框
+						}
+						setInterval(function() {
+							today()
+						}, 1000);
+					</script>
+					<li>
+						<label>录入人<b>*</b></label>
+						<input name="Input" type="text" value="王五" class="dfinput" style="width:345px;" />
+					</li>
+					<li><label>备注<b>*</b></label>
+						<textarea id="content7" name="content" style="width:700px;height:250px;visibility:hidden;"></textarea>
+					</li>
+
+					<li><label>&nbsp;</label><input name="" type="button" class="btn" value="保存成员" /></li>
+				</ul>
+
+				<script type="text/javascript">
+					$("#usual1 ul").idTabs();
+				</script>
+
+				<script type="text/javascript">
+					$('.tablelist tbody tr:odd').addClass('odd');
+				</script>
+
+			</div>
+
+	</body>
+
+	</html>
